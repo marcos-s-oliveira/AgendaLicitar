@@ -1,0 +1,68 @@
+<br><br><br>
+<div class="container-fluid" style="background-color: rgb(117, 10, 167); padding: 2%;color: #FFF;">
+    <span>Editais Coletados</span>
+
+</div>
+<mat-drawer-container >
+  <mat-drawer mode="side" opened style="width: 250px; height: 1200px; padding-left: 1%; padding-top: 1%;">
+    <a mat-raised-button style="width: 90%;"><mat-icon>home</mat-icon> Início</a>
+  </mat-drawer>
+  <mat-drawer-content>
+    <table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div>
+          
+          
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Edital</mat-card-title>
+              <mat-card-subtitle>Disponível</mat-card-subtitle>
+            </mat-card-header>
+              <img mat-card-image src="data:image/jpeg;base64,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" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              
+            </mat-card-content>
+            <mat-card-actions>
+              <a href="{{element.file}}" target="_blank">
+                <button mat-button color="accent">VISUALIZAR</button>
+              </a>
+            </mat-card-actions>
+          </mat-card>
+
+
+        </div>
+        <div class="example-element-description">
+          <h2><b>Objeto: </b></h2>
+          {{element.objeto}}
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+<div class="container-fluid" style="background-color: rgb(117, 10, 167); padding: 2%;color: #FFF;">
+  <span class="example-spacer">Versão 1.0.0</span>
+  <span class="example-spacer"></span>
+  <span style="position: fixed; right: 0; margin-right: 5%;">Powered by <b>Prisma</b></span>
+</div>
